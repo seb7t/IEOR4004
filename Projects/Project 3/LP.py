@@ -67,22 +67,18 @@ class MaxFlow():
         total = self.flowamountvar.x
         paths = []
         print('\n*** Flow Decomposition***\n')
+
         while total > 1e-6:
-            path = [s]
+            path = nx.shortest_path(G, s, t)
             path_flow = float('inf')
-            while path[-1] != t:
-                curr_node = path[-1]
-                next_nodes = [v for v in G.successors(curr_node) if G[curr_node][v]['flow'] > 1e-6]
-                next_node = min(next_nodes, key = lambda x: nx.shortest_path_length(G, x, t))
-                path.append(next_node)
-                path_flow = min(path_flow, G[curr_node][next_node]['flow'])
-            
+            for i in range(1, len(path)):
+                path_flow = min(G[path[i-1]][path[i]]['flow'], path_flow)
             total -= path_flow
             paths.append((path, path_flow))
             print(f'path: {path}, path flow: {path_flow}\n')
             for i in range(1, len(path)):
                 G[path[i-1]][path[i]]['flow'] -= path_flow
-                if G[path[i-1]][path[i]]['flow'] <= 1e-6:
+                if G[path[i-1]][path[i]]['flow'] < 1e-6:
                     G.remove_edge(path[i-1], path[i])
         
         return paths
