@@ -1,0 +1,9 @@
+Total Cost: 520.6828510190655 
+Optimization Gap: 0.01% 
+Require 0 orders to be shipped in full 
+Actual 10 orders shipped in full 
+1 carriers used at full capacity 
+0 plants used at full capacity 
+
+Order-Plant Pair:
+Order0 is shipping to Plant 15Order1 is shipping to Plant 15Order2 is shipping to Plant 15Order3 is shipping to Plant 15Order4 is shipping to Plant 19Order5 is shipping to Plant 15Order6 is shipping to Plant 19Order7 is shipping to Plant 15Order8 is shipping to Plant 15Order9 is shipping to Plant 15
